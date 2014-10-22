@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form!</title>
+    <meta charset="utf-8" />
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="groupproject.js"></script>
+  </head>
+  <body>
+    <form action="/process" method="POST">
+    	<label for="password">Password</label>
+    	<input type="text" id="password" name="password">
+    	<label for="username">Username</label>
+    	<input type="text" id="username" name="username">
+    	<input type="submit" value="Submit">
+  	</form>
+    <div class="clock">
+      <div class="back">
+      </div>
+      <div class="front">
+        <h1 class="minutes">1</h1>
+        <h1>:</h1>
+        <h1 class="seconds">00</h1>
+        <h1>:</h1>
+        <h1 class="milliseconds">00</h1>
+      </div>
+    </div>
+  </body>
+</html>
