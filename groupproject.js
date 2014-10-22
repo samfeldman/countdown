@@ -18,59 +18,92 @@
 
 $(document).ready(function() {
 
-	// function checkPass() {
+
+
+
+		function start() {
+
+			$(".minutes").text("00");
+			$(".seconds").text("59");
+			$(".milliseconds").text("99"); 
 		
-	// 	if ($("#password").val() == "") {
-	// 		alert("Please fill in a password!");
-	// 		return false
-	// 	} else if ($("#password").val() !== "12345") {
-	// 		alert("Password incorrect, try again.");
-	// 		return false
-	// 	} else {
-	// 		return true
-	// 	}
 
-	// }
+			function seconds() {
 
-	// function checkUsername() {
+				var s = $(".seconds").text();
+				if (s<60 && s>0) {
+					s--; 	
+				} else {
+					clearInterval(milliseconds);
+					return false;
+				}
 
-	// 	if ($("#username").val() == "") {
-	// 		alert("Please fill in a username!");
-	// 		return false
-	// 	} else {
-	// 		return true
-	// 	}
+				$(".seconds").text(s);
+				return true;
 
-	// }
 
-	// $("form").submit(function(){
-		
-	// 	if(checkPass() && checkUsername()){
-	// 		alert("The form has been submitted.");
-	// 	}
-	
-	// 	return false
-
-	// });
-		
-			
-	//SET DELAY 
-
-			var i = 99
-			
-			function milliseconds() {
-				
-				setTimeout(function() {
-					
-					$(".milliseconds").html(i);
-					i--;
-					if (i < 100 && i >= 0) {
-						milliseconds();
-					}
-				}, 100)
-				
 			}
 
-			milliseconds();
+			var milliseconds = setInterval(function() {
+
+				var mm = $(".milliseconds").text();
+				if (mm<100 && mm>0) {
+					mm--; 	
+				} else {
+					if(seconds() == true) {
+						mm = 99;
+					}
+				}
+				
+				$(".milliseconds").text(mm);
+
+			}, 10);
+		}
+
+
+	function checkPass() {
+		
+		if ($("#password").val() == "") {
+			alert("Please fill in a password!");
+			return false
+		} else if ($("#password").val() !== "12345") {
+			start();
+			alert("You have one minute to enter the correct password!");
+			return false
+		} else {
+			return true
+		}
+
+	}
+
+	function checkUsername() {
+
+		if ($("#username").val() == "") {
+			alert("Please fill in a username!");
+			return false
+		} else {
+			return true
+		}
+
+	}
+
+
+	$("form").submit(function(){
+		
+		if(checkPass() && checkUsername()){
+			$(".minutes").text("0");
+			var conf = confirm("Form submitted!")
+			if (conf) {
+				window.location = "newpage.html"
+			}
+
+		}
+	
+		return false
+
+	});
+		
+
 
 });
+
