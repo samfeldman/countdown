@@ -56,7 +56,35 @@ $(document).ready(function() {
 			
 	//SET DELAY 
 
+
+
+			var s = 59
+
+			function seconds() {
+
+				setTimeout(function() {
+
+					$(".seconds").html(s);
+					s--;
+					if (s < 60 && s >= 0) {
+						seconds();
+					}
+				}, 1000)
+
+			}
+
+			seconds();
+			
+
+
+
+
+
+
+			
 			var i = 99
+
+		 
 			
 			function milliseconds() {
 				
@@ -67,10 +95,11 @@ $(document).ready(function() {
 					if (i < 100 && i >= 0) {
 						milliseconds();
 					}
-				}, 100)
+				}, 10)
 				
 			}
 
 			milliseconds();
 
 });
+
