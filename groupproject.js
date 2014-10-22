@@ -46,7 +46,8 @@ $(document).ready(function() {
 	// $("form").submit(function(){
 		
 	// 	if(checkPass() && checkUsername()){
-	// 		alert("The form has been submitted.");
+	// 		$(".minutes").text("0");
+	//		start();
 	// 	}
 	
 	// 	return false
@@ -56,50 +57,105 @@ $(document).ready(function() {
 			
 	//SET DELAY 
 
+		
+		// 	function seconds() {
+
+		// 		var s = $(".seconds").text()
+
+		// 		setTimeout(function() {
+		// 			s--;
+		// 			$(".seconds").html(s);
+		// 			if (s < 60 && s > 0) {
+		// 				seconds();
+		// 			}
+		// 		}, 1000)
+
+		// 	}
+
+			
+		// 	function milliseconds() {
+
+		// 		console.log("start a function");
+
+			
+		// 		var sec = (60)
+		// 	//	var sec = $(".seconds").text();	
+				
+		// 		while(sec >= 0)  {
+		// 			console.log("start of the while loop");
+
+		// 			var mm = $(".milliseconds").text()
+
+		// 			setTimeout(function() {
+						
+		// 			console.log("setTimeout");
+
+		// 				mm--;
+		// 				$(".milliseconds").text(mm);
+		// 				if (mm < 100 && mm > 0) {
+		// 					milliseconds();
+		// 				}
+		// 			}, 10); 
+		// 		}	
+		// 	}
 
 
-			var s = 59
+		// function start() {
+			
+			$(".minutes").text("00");
+			$(".seconds").text("3");
+		// 	setTimeout(function() {
+		// 		seconds();
+		// 	}, 1);
+			$(".milliseconds").text("99"); 
+		// 	setTimeout(function() {
+		// 		milliseconds();
+		// 	}, 1);
+		// }
+
+
+
+		
+
+
+
+
+
+
+
+
+		// start()
 
 			function seconds() {
 
-				setTimeout(function() {
+				var s = $(".seconds").text();
+				if (s<60 && s>0) {
+					s--; 	
+				} else {
+					clearInterval(milliseconds);
+					return false;
+				}
 
-					$(".seconds").html(s);
-					s--;
-					if (s < 60 && s >= 0) {
-						seconds();
-					}
-				}, 1000)
+				$(".seconds").text(s);
+				return true;
+
 
 			}
 
-			seconds();
-			
+			var milliseconds = setInterval(function() {
 
-
-
-
-
-
-			
-			var i = 99
-
-		 
-			
-			function milliseconds() {
-				
-				setTimeout(function() {
-					
-					$(".milliseconds").html(i);
-					i--;
-					if (i < 100 && i >= 0) {
-						milliseconds();
+				var mm = $(".milliseconds").text();
+				if (mm<100 && mm>0) {
+					mm--; 	
+				} else {
+					if(seconds() == true) {
+						mm = 99;
 					}
-				}, 10)
+				}
 				
-			}
+				$(".milliseconds").text(mm);
 
-			milliseconds();
+			}, 10);
 
 });
 
