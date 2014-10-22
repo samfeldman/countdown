@@ -94,7 +94,7 @@ $(document).ready(function() {
 			$(".minutes").text("0");
 			var conf = confirm("Form submitted!")
 			if (conf) {
-				window.location = "newpage.html"
+				window.location = "yay.html"
 			}
 
 		}
